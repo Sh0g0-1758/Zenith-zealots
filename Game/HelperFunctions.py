@@ -124,7 +124,7 @@ def merge_left_wall(qc_loc, qc_matrix, state_vector_dict):
         s2 = state_vector_dict[qc_matrix[i][k]]
         if s1 == s2:
             # we will non-wall qubit
-            qc_loc[qc_matrix[i][k]] = None
+            del qc_loc[qc_matrix[i][k]]
             qc_matrix[i][k] = -1
 
 def merge_right_wall(qc_loc, qc_matrix, state_vector_dict):
@@ -137,7 +137,7 @@ def merge_right_wall(qc_loc, qc_matrix, state_vector_dict):
         s2 = state_vector_dict[qc_matrix[i][k]]
         if s1 == s2:
             # we will non-wall qubit
-            qc_loc[qc_matrix[i][k]] = None
+            del qc_loc[qc_matrix[i][k]]
             qc_matrix[i][k] = -1
 
 def merge_up_wall(qc_loc, qc_matrix, state_vector_dict):
@@ -150,7 +150,7 @@ def merge_up_wall(qc_loc, qc_matrix, state_vector_dict):
         s2 = state_vector_dict[qc_matrix[k][i]]
         if s1 == s2:
             # we will non-wall qubit
-            qc_loc[qc_matrix[k][i]] = None
+            del qc_loc[qc_matrix[k][i]]
             qc_matrix[k][i] = -1
 
 def merge_down_wall(qc_loc, qc_matrix, state_vector_dict):
@@ -163,7 +163,7 @@ def merge_down_wall(qc_loc, qc_matrix, state_vector_dict):
         s2 = state_vector_dict[qc_matrix[k][i]]
         if s1 == s2:
             # we will non-wall qubit
-            qc_loc[qc_matrix[k][i]] = None
+            del qc_loc[qc_matrix[k][i]]
             qc_matrix[k][i] = -1
 
 
