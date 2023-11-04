@@ -16,6 +16,13 @@ import json
 
 # Few instructions
 
+# wall_gate = {
+#     0: 'H',
+#     1: 'X',
+#     2: 'I',
+#     3: 'Z'
+# }
+
 # For Direction
 # 0 - Left
 # 1 - Right
@@ -44,6 +51,14 @@ wall_gate = {
     1: 'X',
     2: 'I',
     3: 'Z'
+}
+
+Legend = {
+    "shogo": "Statevector([0.70710678+0.j, 0.70710678+0.j],dims=(2,))",
+    "Sam": "Statevector([0.70710678+0.j, -0.70710678+0.j],dims=(2,))",
+    "Parv": "Statevector([1.+0.j, 0.+0.j],dims=(2,))",
+    "Veet": "Statevector([0.+0.j, 1.+0.j],dims=(2,))",
+    "TunTunMausi": "Statevector([0.+0.j, -1.+0.j],dims=(2,))"
 }
 
 q_circuts = {}
@@ -110,7 +125,7 @@ qc_map = {}
 for _ in range(number_of_q_circuits):
     qc_map[_] = q_circuts[_]
 
-process(qc_map, q_location, location_matrix, 0, wall_gate, state_vector_dict)
+process(qc_map, q_location, location_matrix, 3, wall_gate, state_vector_dict)
 
 # wall_gate = {
 #     0: 'H',
@@ -127,5 +142,5 @@ process(qc_map, q_location, location_matrix, 0, wall_gate, state_vector_dict)
 
 print(location_matrix)
 
-print(state_vector_dict[0][0])
-print(state_vector_dict[1][0])
+print(state_vector_dict[0])
+print(state_vector_dict[1])
