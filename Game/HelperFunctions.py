@@ -144,7 +144,7 @@ def merge_up_wall(qc_loc, qc_matrix, state_vector_dict):
     j = 0
     k = 1
     for i in range(len(qc_matrix)):
-        if qc_matrix[i][j] == -1 or qc_matrix[i][k] == -1:
+        if qc_matrix[j][i] == -1 or qc_matrix[k][i] == -1:
             continue
         s1 = state_vector_dict[qc_matrix[j][i]]
         s2 = state_vector_dict[qc_matrix[k][i]]
@@ -157,7 +157,7 @@ def merge_down_wall(qc_loc, qc_matrix, state_vector_dict):
     j = len(qc_matrix) - 1
     k = len(qc_matrix) - 2
     for i in range(len(qc_matrix)):
-        if qc_matrix[i][j] == -1 or qc_matrix[i][k] == -1:
+        if qc_matrix[j][i] == -1 or qc_matrix[k][i] == -1:
             continue
         s1 = state_vector_dict[qc_matrix[j][i]]
         s2 = state_vector_dict[qc_matrix[k][i]]
