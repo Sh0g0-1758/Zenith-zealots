@@ -1,6 +1,6 @@
 import pygame
 from pygame.locals import *
-import re
+import os
 
 # Import necessary libraries from Qiskit
 from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
@@ -22,6 +22,7 @@ from HelperFunctions import *
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 clock = pygame.time.Clock()
+
 
 def process(qc_map, qc_loc, qc_matrix, dir, gates, state_vector):
     # first we will shift the matrix
@@ -98,11 +99,10 @@ def display(board, screen, legend, jumbled):
                     text_colour = [119, 110, 101]
                 else:
                     text_colour = [249, 246, 242]
-
-                screen.blit(font.render("{:>4}".format(
-                    jumbled[board[i][j]]), 1, text_colour),
-
-                    (grid_x + j * box + 2.5 * padding, grid_y + i * box + 7 * padding))
+                len_jumbled = len(jumbled)
+                if (board[i][j] < len_jumbled):
+                    screen.blit(font.render("{:>4}".format(jumbled[board[i][j]]), 1, text_colour), (
+                        grid_x + j * box + 2.5 * padding, grid_y + i * box + 7 * padding))
 
     left_text = font.render("H", 1, WHITE)
     screen.blit(left_text, (grid_x - left_text.get_width() -
@@ -124,8 +124,8 @@ def display(board, screen, legend, jumbled):
     pygame.display.update()
 
 
-def start():
-    current_level = 0  # Choosing a random default
+def start(LevelNumber):
+    current_level = LevelNumber
     running = True
     font = pygame.font.SysFont("Verdana", 69, bold=True)
 
@@ -322,12 +322,14 @@ def start():
 
 
 if __name__ == "__main__":
+    Levelnumber = 1  # int(os.environ.get("LevelNumber"))
+    print(Levelnumber)
     pygame.init()
     SCREEN_WIDTH = 2500
     SCREEN_HEIGHT = 2000
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption("Zenith Zealots")
 
-    start()
+    start(Levelnumber)
 
     pygame.quit()
